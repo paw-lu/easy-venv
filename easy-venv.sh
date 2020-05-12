@@ -66,3 +66,23 @@ make_venv () {
         return 1
     fi
 }
+
+activate_venv () {
+    # Activate a Python virtual environment
+    # Args:
+    #    directory name (optional) By default is set to ".venv"
+    if [ "$#" -gt 1 ]; then
+        echo "❓ Too many paremeters"
+        echo "Expected 1 optional parameter -- the directory name"
+        return 1
+    fi
+    local DIRECTORY="${1:-.venv}"
+    source "${DIRECTORY}/bin/activate"
+    if [ "$?" -eq "0" ]; then
+        echo "📦 `python --version` virtual environment in `pwd`/${DIRECTORY} activated"
+        return 0
+    else
+        echo "❌ Virtual environment activation failed"
+        return 1
+    fi
+}
