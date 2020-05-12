@@ -2,6 +2,12 @@
 
 Shell functions to manage Python virtual environments
 
+A lot of a Python developer's time
+is spent wrangling virtual environments.
+However,
+the commands to do so are [notoriously](https://venv.netlify.app/) [difficult](http://veekaybee.github.io/2020/02/18/running-jupyter-in-venv/) to remember,
+and surprisingly harder to find than you would like.
+
 ## Usage
 
 Make a Python virtual env
