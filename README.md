@@ -22,6 +22,7 @@ with a prompt named "test-env"
 ❯ activate_venv
 📦 Python 3.8.2 virtual environment in /Users/paulo/.venv activated
 
+~
 test-env ❯
 ```
 
