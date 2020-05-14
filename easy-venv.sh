@@ -1,7 +1,7 @@
 # Easy venv
 # Functions to make managing Python virtual environments easy
 
-add_kernel () {
+add_kernel() {
     # Add the active environment as a Jupyter kernel
     # Assumes python and ipykernel is installed
     # Args: kernel_name
@@ -11,8 +11,7 @@ add_kernel () {
         return 1
     fi
     local KERNEL_NAME="$1"
-    python -m ipykernel install --user --name="${KERNEL_NAME}"
-    if [ "$?" -eq "0" ]; then
+    if python -m ipykernel install --user --name="${KERNEL_NAME}"; then
         echo "🌽 Kernel ${KERNEL_NAME} created"
         return 0
     else
@@ -21,7 +20,7 @@ add_kernel () {
     fi
 }
 
-del_kernel () {
+del_kernel() {
     # Remove a kernel from Jupyter
     # Assumes python and jupyterlab is installed
     # Args: kernel_name
@@ -31,8 +30,7 @@ del_kernel () {
         return 1
     fi
     local KERNEL_NAME="$1"
-    jupyter kernelspec uninstall "${KERNEL_NAME}"
-    if [ "$?" -eq "0" ]; then
+    if jupyter kernelspec uninstall "${KERNEL_NAME}"; then
         echo "🗑 Kernel ${KERNEL_NAME} removed"
         return 0
     else
@@ -41,7 +39,7 @@ del_kernel () {
     fi
 }
 
-make_venv () {
+make_venv() {
     # Make a new Python venv
     # Assumes Python is installed
     # Args:
@@ -59,7 +57,7 @@ make_venv () {
         python -m venv .venv
     fi
     if [ "$?" -eq "0" ]; then
-        echo "📦 `python --version` virtual environment created in `pwd`/${DIRECTORY}"
+        echo "📦 $(python --version) virtual environment created in $(pwd)/${DIRECTORY}"
         return 0
     else
         echo "❌ Virtual environment creation failed"
@@ -67,7 +65,7 @@ make_venv () {
     fi
 }
 
-activate_venv () {
+activate_venv() {
     # Activate a Python virtual environment
     # Args:
     #    directory name (optional) By default is set to ".venv"
@@ -79,7 +77,7 @@ activate_venv () {
     local DIRECTORY="${1:-.venv}"
     source "${DIRECTORY}/bin/activate"
     if [ "$?" -eq "0" ]; then
-        echo "📦 `python --version` virtual environment in `pwd`/${DIRECTORY} activated"
+        echo "📦 $(python --version) virtual environment in $(pwd)/${DIRECTORY} activated"
         return 0
     else
         echo "❌ Virtual environment activation failed"
