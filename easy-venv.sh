@@ -6,9 +6,12 @@ add_kernel() {
     # Add the active environment as a Jupyter kernel
     # Assumes python and ipykernel is installed
     # Args: kernel_name
+    #     KERNEL_NAME: The name of the kernel to be created
     if [ "$#" -ne 1 ]; then
         echo "❓ Illegal number of parameters"
         echo "Expected 1 parameter -- the kernel name"
+        echo
+        echo "Usage: activate_venv [KERNEL_NAME]"
         return 1
     fi
     local KERNEL_NAME="$1"
