@@ -1,3 +1,4 @@
+#!/bin/bash
 # Easy venv
 # Functions to make managing Python virtual environments easy
 
