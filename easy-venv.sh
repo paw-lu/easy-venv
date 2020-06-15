@@ -49,6 +49,8 @@ make_venv() {
     if [ "$#" -gt 2 ]; then
         echo "❓ Too many paremeters"
         echo "Expected 2 optional parameters -- the prompt and directory name"
+        echo
+        echo "Usage: make_venv [PROMPT_NAME] [DIRECTORY]"
         return 1
     elif [ "$#" -gt 0 ]; then
         local PROMPT_NAME="$1"
