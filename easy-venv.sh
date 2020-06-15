@@ -52,19 +52,16 @@ make_venv() {
         echo
         echo "Usage: make_venv [PROMPT_NAME] [DIRECTORY]"
         return 1
-    elif [ "$#" -gt 0 ]; then
-        local PROMPT_NAME="$1"
-        local DIRECTORY="${2:-.venv}"
-        python -m venv --prompt="${PROMPT_NAME}" "${DIRECTORY}"
     else
-        python -m venv .venv
-    fi
-    if [ "$?" -eq "0" ]; then
-        echo "📦 $(python --version) virtual environment created in $(pwd)/${DIRECTORY}"
-        return 0
-    else
-        echo "❌ Virtual environment creation failed"
-        return 1
+        local prompt_name="${1:-.venv}"
+        local directory="${2:-.venv}"
+        if python -m venv --prompt="${prompt_name}" "${directory}"; then
+            echo "📦 $(python --version) virtual environment created in $(pwd)/${directory}"
+            return 0
+        else
+            echo "❌ Virtual environment creation failed"
+            return 1
+        fi
     fi
 }
 
