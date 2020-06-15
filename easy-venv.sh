@@ -72,6 +72,8 @@ activate_venv() {
     if [ "$#" -gt 1 ]; then
         echo "❓ Too many paremeters"
         echo "Expected 1 optional parameter -- the directory name"
+        echo
+        echo "Usage: activate_venv [DIRECTORY]"
         return 1
     fi
     local DIRECTORY="${1:-.venv}"
