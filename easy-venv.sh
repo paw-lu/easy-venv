@@ -28,10 +28,13 @@ add_kernel() {
 del_kernel() {
     # Remove a kernel from Jupyter
     # Assumes python and jupyterlab is installed
-    # Args: kernel_name
+    # Args:
+    #    KERNEL_NAME: The name of the kernel to be deleted
     if [ "$#" -ne 1 ]; then
         echo "❓ Illegal number of parameters"
         echo "Expected 1 parameter -- the kernel name"
+        echo
+        echo "Usage: del_kernel [KERNEL_NAME]"
         return 1
     fi
     local KERNEL_NAME="$1"
