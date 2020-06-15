@@ -36,14 +36,15 @@ del_kernel() {
         echo
         echo "Usage: del_kernel [KERNEL_NAME]"
         return 1
-    fi
-    local KERNEL_NAME="$1"
-    if jupyter kernelspec uninstall "${KERNEL_NAME}"; then
-        echo "🗑 Kernel ${KERNEL_NAME} removed"
-        return 0
     else
-        echo "❌ Kernel removal failed"
-        return 1
+        local KERNEL_NAME="$1"
+        if jupyter kernelspec uninstall "${KERNEL_NAME}"; then
+            echo "🗑 Kernel ${KERNEL_NAME} removed"
+            return 0
+        else
+            echo "❌ Kernel removal failed"
+            return 1
+        fi
     fi
 }
 
