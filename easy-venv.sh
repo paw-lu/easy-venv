@@ -75,14 +75,14 @@ activate_venv() {
         echo
         echo "Usage: activate_venv [DIRECTORY]"
         return 1
-    fi
-    local directory="${1:-.venv}"
-    source "${directory}/bin/activate"
-    if [ "$?" -eq "0" ]; then
-        echo "📦 $(python --version) virtual environment in $(pwd)/${directory} activated"
-        return 0
     else
-        echo "❌ Virtual environment activation failed"
-        return 1
+        local directory="${1:-.venv}"
+        if source "${directory}/bin/activate"; then
+            echo "📦 $(python --version) virtual environment in $(pwd)/${directory} activated"
+            return 0
+        else
+            echo "❌ Virtual environment activation failed"
+            return 1
+        fi
     fi
 }
