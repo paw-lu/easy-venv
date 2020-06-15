@@ -13,14 +13,15 @@ add_kernel() {
         echo
         echo "Usage: activate_venv [KERNEL_NAME]"
         return 1
-    fi
-    local kernel_name="$1"
-    if python -m ipykernel install --user --name="${kernel_name}"; then
-        echo "🌽 Kernel ${kernel_name} created"
-        return 0
     else
-        echo "Kernel creation failed"
-        return 1
+        local kernel_name="$1"
+        if python -m ipykernel install --user --name="${kernel_name}"; then
+            echo "🌽 Kernel ${kernel_name} created"
+            return 0
+        else
+            echo "Kernel creation failed"
+            return 1
+        fi
     fi
 }
 
